@@ -18,6 +18,7 @@ language = {
     "cancel": "Download is a Cancel!",
     "in_downloading": "Downloading",
     "finish": "Downloading Finish!",
+    "check_updates": "Checking For updates!",
     "error":
     {
         "missing_type": "Error This Type Not Support Try Again {times}!",
@@ -108,6 +109,7 @@ def init():
 
 def updater(file):
     global settings, updateURL
+    print(language["check_updates"])
     if settings["check"]:
         checkForUpdates(__file__, updateURL.format(file))
         
