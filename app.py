@@ -96,6 +96,7 @@ def stepTwo(url):
 
 def init():
     loadSettings()
+    updater('app.py')
     loadLang()
     loadPlugins()
     stepOne()
@@ -106,6 +107,5 @@ def updater(file):
         checkForUpdates(__file__, updateURL.format(file))
         
 if __name__ == "__main__":
-    updater('app.py')
     init()
     
