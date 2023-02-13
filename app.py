@@ -4,7 +4,8 @@ from os.path import exists, isfile
 
 settings = {
     "lang": "en",
-    "authon": "vanko(ivoop)"
+    "authon": "vanko(ivoop)",
+    "check": True
     }
 
 language = {
@@ -28,6 +29,7 @@ files = {
     "version": "0.1"
     }
 
+updateURL = 'https://raw.githubusercontent.com/ivan100-ivoop/CrazyDownloader/main/{}'
 maxErrorType = 3
 
 def loadSettings():
@@ -59,6 +61,7 @@ def loadPlugins():
         for x in plugin:
             file = '{folder}/{filename}'.format(folder=files["plugins"], filename=x)
             if isfile(file):
+                updater(updateURL.format(file))
                 plugins[x.split(".")[0].lower()] = file.split(".")[0]
 
 def startFunction(word, plg):
@@ -96,8 +99,13 @@ def init():
     loadLang()
     loadPlugins()
     stepOne()
-    
+
+def updater(file):
+    global settings
+    if settings["check"]:
+        checkForUpdates(__file__, updateURL.format(file))
+        
 if __name__ == "__main__":
-    #checkForUpdates(__file__, "https://raw.githubusercontent.com/username/repo/myProgram.py")
+    updater(updateURL.format('app.py'))
     init()
     
