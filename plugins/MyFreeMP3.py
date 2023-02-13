@@ -1,4 +1,5 @@
-import requests, json, time, sys
+import requests, json, time, sys, os
+from os.path import exists
 
 api = {
     "search": "https://myfreemp3.to/api/search?query={}",
@@ -19,7 +20,9 @@ def getSearchData(name):
 
 
 def selectSearch(d):
+    global language
     one = 0
+    print(language["select"]);
     for x in d:
         print('{}. {}'.format(one, x["title"]))
         one = one + 1
@@ -42,7 +45,9 @@ def getDownload(data):
 
 def downloder(file_name, link):
     global language
-    with open(file_name, "wb") as f:
+    if exists('music/') == False:
+        os.mkdir('music/')
+    with open('music/{}'.format(file_name), "wb+") as f:
         print("{} {}".format(language["in_downloading"], file_name))
         response = requests.get(link, stream=True)
         total_length = response.headers.get('content-length')
