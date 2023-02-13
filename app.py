@@ -13,6 +13,11 @@ language = {
     "ask_url": "Give me Name of Song/video?",
     "sumbol": "> ",
     "type": "Select Suppoty Type:",
+    "wait": "Wait {} Creating Download Link!",
+    "confirm": "Confirm Download yes/no (default: yes)?",
+    "cancel": "Download is a Cancel!",
+    "in_downloading": "Downloading",
+    "finish": "Downloading Finish!",
     "error":
     {
         "missing_type": "Error This Type Not Support Try Again {times}!",
@@ -66,8 +71,8 @@ def loadPlugins():
 
 def startFunction(word, plg):
     global plugins, files
-    exec('from {0} import {1}'.format(plugins[plg].replace('/', '.'), files["func"]))
-    exec('{0}("{1}")'.format(files["func"], word))
+    exec('from {0} import *'.format(plugins[plg].replace('/', '.')))
+    exec('{0}("{1}", {2})'.format(files["func"], word, language))
 
 def stepOne():
     global files
