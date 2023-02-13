@@ -61,7 +61,7 @@ def loadPlugins():
         for x in plugin:
             file = '{folder}/{filename}'.format(folder=files["plugins"], filename=x)
             if isfile(file):
-                updater(updateURL.format(file))
+                updater(file)
                 plugins[x.split(".")[0].lower()] = file.split(".")[0]
 
 def startFunction(word, plg):
@@ -106,6 +106,6 @@ def updater(file):
         checkForUpdates(__file__, updateURL.format(file))
         
 if __name__ == "__main__":
-    updater(updateURL.format('app.py'))
+    updater('app.py')
     init()
     
