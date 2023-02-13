@@ -101,7 +101,7 @@ def init():
     stepOne()
 
 def updater(file):
-    global settings
+    global settings, updateURL
     if settings["check"]:
         checkForUpdates(__file__, updateURL.format(file))
         
