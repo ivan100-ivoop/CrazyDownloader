@@ -1,2 +1,2 @@
-def init_plugin(x):
+def init_plugin(x, lang={}):
     print(x)
