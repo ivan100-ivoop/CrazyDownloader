@@ -17,6 +17,7 @@ language = {
     "confirm": "Confirm Download yes/no (default: yes)?",
     "cancel": "Download is a Cancel!",
     "in_downloading": "Downloading",
+    "select": "Select:",
     "finish": "Downloading Finish!",
     "check_updates": "Checking For updates!",
     "error":
