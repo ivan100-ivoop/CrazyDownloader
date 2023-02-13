@@ -85,12 +85,19 @@ def stepOne():
 
 def stepTwo(url):
     global maxErrorType
+    _tmp = [];
+    one = 0
     for x in plugins:
-        print(x)
+        _tmp.append(x)
+        print('{}) {}'.format(one, x))
+        one = one + 1;
     plg = input(language["sumbol"])
-    plg = plg.lower()
-    if plg in plugins:
-        startFunction(url, plg)
+    if plg == "":
+        quit()
+    #plg = plg.lower()
+    plgs = _tmp[int(plg)]
+    if plgs in plugins:
+        startFunction(url, plgs)
     else:
         if maxErrorType == 1:
             print(language["error"]["to_many_type"])
@@ -109,8 +116,9 @@ def init():
 
 def updater(file):
     global settings, updateURL
+    print(language["check_updates"])
     if settings["check"]:
-        print(language["check_updates"])
+        
         checkForUpdates(__file__, updateURL.format(file))
         
 if __name__ == "__main__":
