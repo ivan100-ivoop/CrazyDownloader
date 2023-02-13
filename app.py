@@ -109,8 +109,8 @@ def init():
 
 def updater(file):
     global settings, updateURL
-    print(language["check_updates"])
     if settings["check"]:
+        print(language["check_updates"])
         checkForUpdates(__file__, updateURL.format(file))
         
 if __name__ == "__main__":
